@@ -1,50 +1,50 @@
 const CounterPlugin = function ({
   rootSelector,
   initialValue = 0,
-  step = 1,
+  initialStep = 1,
 } = {}) {
-  this._value = initialValue;
-  this._step = step;
-  this._refs = this._getRefs(rootSelector);
+  this.counterValue = initialValue;
+  this.step = initialStep;
+  this.refs = this.getRefs(rootSelector);
 
-  this._bindEvents();
-  this.updateValueUI();
+  this.bindEvents();
+  this.updateValue();
 };
 
-CounterPlugin.prototype._getRefs = function (rootSelector) {
+CounterPlugin.prototype.getRefs = function (rootSelector) {
   const refs = {};
   refs.container = document.querySelector(rootSelector);
-  refs.Btns = refs.container.querySelectorAll("[data-action]");
+  refs.buttons = refs.container.querySelectorAll("[data-action]");
   refs.value = refs.container.querySelector("#value");
   return refs;
 };
 
-CounterPlugin.prototype._bindEvents = function () {
-  this._refs.Btns[0].addEventListener("click", () => {
-    this._refs.Btns[0].dataset.action === "decrement"
+CounterPlugin.prototype.bindEvents = function () {
+  this.refs.buttons[0].addEventListener("click", () => {
+    this.refs.buttons[0].dataset.action === "decrement"
       ? this.decrement()
       : this.increment();
-    this.updateValueUI();
+    this.updateValue();
   });
 
-  this._refs.Btns[1].addEventListener("click", () => {
-    this._refs.Btns[1].dataset.action === "increment"
+  this.refs.buttons[1].addEventListener("click", () => {
+    this.refs.buttons[1].dataset.action === "increment"
       ? this.increment()
       : this.decrement();
-    this.updateValueUI();
+    this.updateValue();
   });
 };
 
-CounterPlugin.prototype.updateValueUI = function () {
-  this._refs.value.textContent = this._value;
+CounterPlugin.prototype.updateValue = function () {
+  this.refs.value.textContent = this.counterValue;
 };
 
 CounterPlugin.prototype.increment = function () {
-  this._value += this._step;
+  this.counterValue += this.step;
 };
 
 CounterPlugin.prototype.decrement = function () {
-  this._value -= this._step;
+  this.counterValue -= this.step;
 };
 
 new CounterPlugin({ rootSelector: "#counter" });
