@@ -50,7 +50,6 @@
 Напиши скрипт который:
 
 1. Посчитает и выведет в консоль количество категорий в `ul#categories`, то есть элементов `li.item`.
-
 2. Для каждого элемента `li.item` в списке
    `ul#categories`, найдет и выведет в консоль текст заголовка элемента (тега `<h2>`) и количество элементов в категории (всех вложенных в него `<li>`).
 
@@ -90,35 +89,42 @@ const ingredients = [
 
 Напиши скрипт, который для каждого элемента массива `ingredients`:
 
-Создаст отдельный элемент `<li>`
+1. Создаст отдельный элемент `<li>`. Обзательно используй метод `document.createElement()`.
+2. Добавит название
+   ингредиента как его текстовое содержимое.
+3. Добавит элементу класс `item`.
+4. После чего вставит все `<li>` за одну операцию в список `ul#ingredients`.
 
-  <li>
-    . Обзательно используй метод document.createElement(). Добавит название
-    ингредиента как его текстовое содержимое. Добавит элементу класс item. После
-    чего вставит все
-  </li>
+## Задание 3
 
-  <li>
-    за одну операцию в список ul#ingredients. Задание 3 Напиши скрипт для
-    создания галереи изображений по массиву данных. В HTML есть список
-    ul.gallery.
+Напиши скрипт для создания галереи изображений по массиву данных. В HTML есть список `ul.gallery`.
 
-    <ul class="gallery"></ul>
-    Используй массив объектов images для создания элементов <img /> вложенных в
+````html
+<ul class="gallery"></ul>
 
-  </li>
+Используй массив объектов `images` для создания элементов `<img>` вложенных в `<li>`. Для создания разметки используй шаблонные строки и метод `insertAdjacentHTML()`.
 
-  <li>
-    . Для создания разметки используй шаблонные строки и метод
-    insertAdjacentHTML(). Все элементы галереи должны добавляться в DOM за одну
-    операцию вставки. Добавь минимальное оформление галереи флексбоксами или
-    гридами через CSS классы. const images = [ { url:
-    "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
-    alt: "White and Black Long Fur Cat", }, { url:
-    "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
-    alt: "Orange and White Koi Fish Near Yellow Koi Fish", }, { url:
-    "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
-    alt: "Group of Horses Running", }, ]; Задание 4 Счетчик состоит из спана и
+- Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+- Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
+
+```js
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  { url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+];
+
+## Задание 4
+
+Счетчик состоит из спана и
     кнопок, которые, при клике, должны увеличивать и уменьшать его значение на
     единицу.
 
@@ -224,4 +230,4 @@ const ingredients = [
 
   </li>
 </h2>
-```
+````
