@@ -17,12 +17,10 @@ const atTheOldToad = {
     this.potions.push(newPotion);
   },
   removePotion(potionName) {
-    const potions = this.potions;
-
-    for (let i = 0; i < potions.length; i += 1) {
-      const { name } = potions[i];
+    for (let i = 0; i < this.potions.length; i += 1) {
+      const { name } = this.potions[i];
       if (name === potionName) {
-        potions.splice(i, 1);
+        this.potions.splice(i, 1);
         return `Potion ${potionName} is deleted`;
       }
     }
@@ -41,4 +39,5 @@ const atTheOldToad = {
   // Change code above this line
 };
 atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion");
-atTheOldToad.addPotion({ name: "aaaaa" });
+atTheOldToad.addPotion({ name: "aaaaa", price: 5 });
+console.log(atTheOldToad.removePotion("aaaaa"));
