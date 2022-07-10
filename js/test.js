@@ -8,16 +8,13 @@ const atTheOldToad = {
   getPotions() {
     return this.potions;
   },
-  addPotion(potion) {
-    const potions = this.potions;
-    const { name: newName } = potion;
-    for (const { name } of potions) {
-      if (name === newName) {
-        return `Error! Potion ${newName} is already in your inventory!`;
+  addPotion(newPotion) {
+    for (const potion of this.potions) {
+      if (potion.name === newPotion.name) {
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
       }
     }
-    potions.push(potion);
-    return `Potion ${newName} is added`;
+    this.potions.push(newPotion);
   },
   removePotion(potionName) {
     const potions = this.potions;
@@ -44,3 +41,4 @@ const atTheOldToad = {
   // Change code above this line
 };
 atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion");
+atTheOldToad.addPotion({ name: "aaaaa" });
