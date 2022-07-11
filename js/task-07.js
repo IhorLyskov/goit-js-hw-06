@@ -3,10 +3,10 @@ const refs = {
   textSpan: document.querySelector("#text"),
 };
 
-refs.textSpan.style.fontSize = refs.inputFontSize.value + "px";
-
-refs.inputFontSize.addEventListener("input", onInputFontSize);
-
-function onInputFontSize(event) {
+function setFontSize() {
   refs.textSpan.style.fontSize = refs.inputFontSize.value + "px";
 }
+
+setFontSize();
+
+refs.inputFontSize.addEventListener("input", setFontSize);
