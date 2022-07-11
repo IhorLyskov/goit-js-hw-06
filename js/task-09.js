@@ -26,9 +26,10 @@ function setBackgroundColor() {
 }
 
 function getRandomHexColor() {
-  let hex6digits = Math.floor(Math.random() * 16777215).toString(16);
-  while (hex6digits.length < 6) {
-    hex6digits = "0" + hex6digits;
-  }
-  return "#" + hex6digits;
+  return (
+    "#" +
+    Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, "0")
+  );
 }
