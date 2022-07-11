@@ -228,9 +228,12 @@ const images = [
 
 Для генерации случайного цвета используй функцию `getRandomHexColor`.
 
-```html
-function getRandomHexColor() { return `#${Math.floor(Math.random() * 16777215)
-.toString(16) .padStart(6, 0)}`; }
+```js
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
 ```
 
 ## Задание 10 (выполнять необязательно)
