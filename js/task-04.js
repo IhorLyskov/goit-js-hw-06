@@ -14,23 +14,24 @@ const CounterPlugin = function ({
 CounterPlugin.prototype.getRefs = function (rootSelector) {
   const refs = {};
   refs.container = document.querySelector(rootSelector);
-  refs.buttons = refs.container.querySelectorAll("[data-action]");
+  refs.buttonDecrement = refs.container.querySelector(
+    '[data-action="decrement"]'
+  );
+  refs.buttonIncrement = refs.container.querySelector(
+    '[data-action="increment"]'
+  );
   refs.value = refs.container.querySelector("#value");
   return refs;
 };
 
 CounterPlugin.prototype.bindEvents = function () {
-  this.refs.buttons[0].addEventListener("click", () => {
-    this.refs.buttons[0].dataset.action === "decrement"
-      ? this.decrement()
-      : this.increment();
+  this.refs.buttonDecrement.addEventListener("click", () => {
+    this.decrement();
     this.updateValue();
   });
 
-  this.refs.buttons[1].addEventListener("click", () => {
-    this.refs.buttons[1].dataset.action === "increment"
-      ? this.increment()
-      : this.decrement();
+  this.refs.buttonIncrement.addEventListener("click", () => {
+    this.increment();
     this.updateValue();
   });
 };
