@@ -1,35 +1,36 @@
-// Напиши скрипт создания и очистки коллекции элементов.
-// Пользователь вводит количество элементов в `input` и нажимает кнопку `Создать`, после чего рендерится коллекция. При нажатии на кнопку `Очистить`, коллекция элементов очищается.
-
-// ```html
-// <div id="controls">
-//   <input type="number" min="1" max="100" step="1" />
-//   <button type="button" data-create>Create</button>
-//   <button type="button" data-destroy>Destroy</button>
-// </div>
-
-// <div id="boxes"></div>
-// ```
-
-// Создай функцию `createBoxes(amount)`, которая принимает один параметр -число. Функция создает столько `<div>`, сколько указано в `amount` и добавляет их в `div#boxes`.
-
-// 1. Размеры самого первого `<div>` - 30px на 30px.
-// 2. Каждый элемент после первого, должен быть шире и выше предыдущего на 10px.
-// 3. Все элементы должены иметь случайный цвет фона в
-//    формате HEX. Используй готовую функцию `getRandomHexColor` для получения цвета.
-
-// Создай функцию `destroyBoxes()`, которая очищает содержимое `div#boxes`, тем самым удаляя все созданные элементы.
+const initWidth = 30;
+const initHeight = 30;
+const step = 10;
 
 const refs = {
   controls: document.querySelector("#controls"),
-  // inputNumber: document.querySelector("#controls").firstChild,
+  inputNumber: controls.children[0],
   buttonCreate: document.querySelector("button[data-create]"),
   buttonDestroy: document.querySelector("button[data-destroy]"),
   divBoxes: document.querySelector("#boxes"),
 };
 
-// console.log(inputNumber, buttonCreate, buttonDestroy, divBoxes);
-console.log(controls, buttonCreate, buttonDestroy, divBoxes);
+refs.buttonCreate.addEventListener("click", createBoxes);
+refs.buttonDestroy.addEventListener("click", destroyBoxes);
+
+function createBoxes() {
+  const countBoxes = Number(refs.inputNumber.value);
+  if (countBoxes > 0) {
+    let textBoxes = "";
+    for (let i = 0; i < countBoxes; i += 1) {
+      textBoxes += `<div style="background-color: ${getRandomHexColor()}; 
+        width:${i * step + initWidth}px; 
+        height:${i * step + initHeight}px;"></div>`;
+    }
+    refs.divBoxes.innerHTML = textBoxes;
+    refs.divBoxes.setAttribute("style", "display: flex; margin-top: 10px");
+  }
+}
+
+function destroyBoxes() {
+  refs.divBoxes.innerHTML = "";
+  refs.divBoxes.removeAttribute("style");
+}
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
